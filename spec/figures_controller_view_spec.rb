@@ -30,7 +30,7 @@ describe FiguresController do
     visit '/figures/new'
     fill_in :figure_name, :with => "Doctor Who"
     check "title_#{Title.first.id}"
-    click_button "Create New Figure"
+    page.find(:css, "[type=submit]").click
     figure = Figure.last
     expect(Figure.all.count).to eq(3)
     expect(figure.name).to eq("Doctor Who")
